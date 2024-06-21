@@ -1101,7 +1101,7 @@ void AShooterCharacter::StopJumping()
 	Super::StopJumping();
 }
 
-void AShooterCharacter::InterpCapsuleHalfHeight(float DeltaTime) const
+void AShooterCharacter::InterpCapsuleHalfHeight(float DeltaTime)
 {
 	float TargetCapsuleHalfHeight;
 	if(bCrouching)

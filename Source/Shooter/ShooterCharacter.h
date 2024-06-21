@@ -151,7 +151,7 @@ protected:
 	virtual void StopJumping() override;
 
 	/** lerps height of capsule */
-	void InterpCapsuleHalfHeight(float DeltaTime) const;
+	void InterpCapsuleHalfHeight(float DeltaTime);
 	
 	void Aim();
 	void StopAiming();
