@@ -1055,17 +1055,11 @@ void AShooterCharacter::CrouchButtonPressed()
 void AShooterCharacter::CrouchButtonPressed_Server_Implementation()
 {
 	CrouchButtonPressed_MultiCast();
-	
-	if(GEngine)
-			GEngine->AddOnScreenDebugMessage(1, 1.f, FColor::Black, "Sent request for Crouch from Client testing");
 }
 
 void AShooterCharacter::CrouchButtonPressed_MultiCast_Implementation()
 {
 	EventCrouchButtonPressed();
-
-	if(GEngine)
-			GEngine->AddOnScreenDebugMessage(2, 3.f, FColor::Black, "Received command for Crouch from Server testing");
 }
 
 void AShooterCharacter::EventCrouchButtonPressed()

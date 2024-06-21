@@ -141,7 +141,7 @@ protected:
 	UFUNCTION(Server,Reliable)
 	void CrouchButtonPressed_Server();
 	
-	UFUNCTION(NetMulticast,Reliable)
+	UFUNCTION(Reliable, NetMulticast)
 	void CrouchButtonPressed_MultiCast();
 	
 	void EventCrouchButtonPressed();
