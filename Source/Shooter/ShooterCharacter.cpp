@@ -629,7 +629,28 @@ void AShooterCharacter::FinishCrosshairBulletFire()
 void AShooterCharacter::FireButtonPressed()
 {
 	if(bDead) return;
-	
+	if(HasAuthority())
+	{
+		FireButtonPressed_MultiCast();
+	}
+	else
+	{
+		FireButtonPressed_Server();
+	}
+}
+
+void AShooterCharacter::FireButtonPressed_MultiCast_Implementation()
+{
+	EventFireButtonPressed();
+}
+
+void AShooterCharacter::FireButtonPressed_Server_Implementation()
+{
+	FireButtonPressed_MultiCast();
+}
+
+void AShooterCharacter::EventFireButtonPressed()
+{	
 	bFireButtonPressed = true;
 	FireWeapon();
 }
@@ -637,7 +658,28 @@ void AShooterCharacter::FireButtonPressed()
 void AShooterCharacter::FireButtonReleased()
 {
 	if(bDead) return;
-	
+	if(HasAuthority())
+	{
+		FireButtonReleased_MultiCast();
+	}
+	else
+	{
+		FireButtonReleased_Server();
+	}
+}
+
+void AShooterCharacter::FireButtonReleased_MultiCast_Implementation()
+{
+	EventFireButtonReleased();
+}
+
+void AShooterCharacter::FireButtonReleased_Server_Implementation()
+{
+	FireButtonReleased_MultiCast();
+}
+
+void AShooterCharacter::EventFireButtonReleased()
+{	
 	bFireButtonPressed = false;
 }
 
@@ -835,6 +877,18 @@ void AShooterCharacter::SelectButtonPressed()
 	}
 }
 
+void AShooterCharacter::SelectButtonPressed_MultiCast_Implementation()
+{
+}
+
+void AShooterCharacter::SelectButtonPressed_Server_Implementation()
+{
+}
+
+void AShooterCharacter::EventSelectButtonPressed()
+{
+}
+
 // ReSharper disable once CppMemberFunctionMayBeConst
 void AShooterCharacter::SelectButtonReleased()
 {
@@ -952,7 +1006,28 @@ void AShooterCharacter::PlayGunFireMontage() const
 void AShooterCharacter::ReloadButtonPressed()
 {
 	if(bDead) return;
-	
+	if(HasAuthority())
+	{
+		ReloadButtonPressed_MultiCast();
+	}
+	else
+	{
+		ReloadButtonPressed_Server();
+	}
+}
+
+void AShooterCharacter::ReloadButtonPressed_MultiCast_Implementation()
+{
+	EventReloadButtonPressed();
+}
+
+void AShooterCharacter::ReloadButtonPressed_Server_Implementation()
+{
+	ReloadButtonPressed_MultiCast();
+}
+
+void AShooterCharacter::EventReloadButtonPressed()
+{	
 	ReloadWeapon();
 }
 
@@ -1101,7 +1176,7 @@ void AShooterCharacter::StopJumping()
 	Super::StopJumping();
 }
 
-void AShooterCharacter::InterpCapsuleHalfHeight(float DeltaTime)
+void AShooterCharacter::InterpCapsuleHalfHeight(float DeltaTime) const
 {
 	float TargetCapsuleHalfHeight;
 	if(bCrouching)

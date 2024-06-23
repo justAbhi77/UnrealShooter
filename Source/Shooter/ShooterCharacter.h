@@ -90,7 +90,23 @@ protected:
 
 	void FireButtonPressed();
 
+	UFUNCTION(Server,Reliable)
+	void FireButtonPressed_Server();
+	
+	UFUNCTION(Reliable, NetMulticast)
+	void FireButtonPressed_MultiCast();
+	
+	void EventFireButtonPressed();
+
 	void FireButtonReleased();
+
+	UFUNCTION(Server,Reliable)
+	void FireButtonReleased_Server();
+	
+	UFUNCTION(Reliable, NetMulticast)
+	void FireButtonReleased_MultiCast();
+	
+	void EventFireButtonReleased();
 
 	void StartFireTimer();
 
@@ -108,6 +124,15 @@ protected:
 	void DropWeapon() const; // detach weapon from player
 
 	void SelectButtonPressed();
+
+	UFUNCTION(Server,Reliable)
+	void SelectButtonPressed_Server();
+	
+	UFUNCTION(Reliable, NetMulticast)
+	void SelectButtonPressed_MultiCast();
+	
+	void EventSelectButtonPressed();
+	
 	void SelectButtonReleased();
 
 	void SwapWeapon(AWeapon* WeaponToSwap); // Drop current weapon and pick this weapon
@@ -123,6 +148,14 @@ protected:
 	void PlayGunFireMontage() const;
 
 	void ReloadButtonPressed();
+
+	UFUNCTION(Server,Reliable)
+	void ReloadButtonPressed_Server();
+	
+	UFUNCTION(Reliable, NetMulticast)
+	void ReloadButtonPressed_MultiCast();
+	
+	void EventReloadButtonPressed();	
 
 	void ReloadWeapon();
 
@@ -151,7 +184,7 @@ protected:
 	virtual void StopJumping() override;
 
 	/** lerps height of capsule */
-	void InterpCapsuleHalfHeight(float DeltaTime);
+	void InterpCapsuleHalfHeight(float DeltaTime) const;
 	
 	void Aim();
 	void StopAiming();
